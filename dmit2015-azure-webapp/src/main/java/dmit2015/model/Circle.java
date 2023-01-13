@@ -42,4 +42,26 @@ public class Circle {
     {
         return 2 * Math.PI * radius;
     }
+
+    public static void main(String[] args)
+    {
+        Circle circle = new Circle();
+
+        System.out.printf("The radius of the circle is %s\n", circle.getRadius());
+        System.out.printf("The area of the circle is %.2f\n", circle.Area());
+        System.out.printf("The perimeter of the circle is %.2f", circle.Perimeter());
+
+        //Change the radius to 5
+        circle.setRadius(5);
+        System.out.printf("The radius of the circle is %s\n", circle.getRadius());
+        System.out.printf("The area of the circle is %.2f\n", circle.Area());
+        System.out.printf("The perimeter of the circle is %.2f", circle.Perimeter());
+
+        //Exception
+
+            circle.setRadius(-25);
+            System.out.printf("Exception should have been thrown");
+
+        
+    }
 }
