@@ -62,6 +62,6 @@ public class Circle {
             circle.setRadius(-25);
             System.out.printf("Exception should have been thrown");
 
-        
+
     }
 }
