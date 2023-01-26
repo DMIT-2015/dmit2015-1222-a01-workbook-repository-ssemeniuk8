@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BMITest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void calculateBMI_shouldPass() {
         // Arrange
         double expected = 22.8;

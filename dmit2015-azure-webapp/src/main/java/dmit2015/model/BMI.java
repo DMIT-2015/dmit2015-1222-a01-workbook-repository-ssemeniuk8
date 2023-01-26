@@ -1,5 +1,12 @@
 package dmit2015.model;
 
+/**
+ * This class calculates the BMI and BMI Category for a person.
+ *
+ * @author Sasha Semeniuk
+ * @version 2023.1.20
+ */
+
 import lombok.Data;
 
 public @Data class BMI {
@@ -8,10 +15,18 @@ public @Data class BMI {
 
     private double height;
 
+    /**
+     * Compute and return the BMI value using lbs and inches
+     * @return the BMI value
+     */
     public double calculateBMI() {
         return (703 * weight) / (height * height);
     }
 
+    /**
+     * Compute and return the BMI Category
+     * @return the BMI Category
+     */
     public String calculateBMICategory() {
         double bmi = calculateBMI();
         if (bmi < 18.5) {
