@@ -45,32 +45,40 @@
         <p:growl id="growl"/>
 
         <!--Example on conditional rendering, you will need to change the rendered attribute value to an EL value expression -->
-        <p:outputPanel id="outputPanel">
-            <h:outputText
-                    rendered="false"
-                    value="Hello Faces World!"/>
-        </p:outputPanel>
+
 
         <h:form prependId="false">
+
+            <p:outputPanel id="outputPanel">
+                <p:graphicImage
+                        rendered="#{not empty currentDiceRollViewScopedView.currentDiceFaceValue}"
+                        value="#{currentDiceRollViewScopedView.currentDiceFaceImage}"
+                        alt="Dice Value #{currentDiceRollViewScopedView.currentDiceFaceValue}"
+                        width="100px"
+                        height="100px"
+                />
+            </p:outputPanel>
+
             <p:focus context="formPanel"/>
 
             <p:panel id="formPanel" header="Form Panel">
                 <div class="ui-fluid">
 
-                    <!--                    <div class="field">-->
-                    <!--                        <p:outputLabel for="@next" >Text Value</p:outputLabel>-->
-                    <!--                        <p:inputText id="textValue" value="TODO Faces EL"/>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="field col-12 md:col-3">-->
-                    <!--                        <p:outputLabel for="@next" value="Select One Value"/>-->
-                    <!--                        <p:selectOneMenu id="option" value="TODO Faces EL">-->
-                    <!--                            <f:selectItem itemLabel="Select One" itemValue=""/>-->
-                    <!--                            <f:selectItems value="TODO Faces EL"-->
-                    <!--                                           var="currentSelectItem"-->
-                    <!--                                           itemLabel="#{currentSelectItem}"-->
-                    <!--                                           itemValue="#{currentSelectItem}" />-->
-                    <!--                        </p:selectOneMenu>-->
-                    <!--                    </div>-->
+                    <div class="field">
+                        <p:outputLabel for="@next" >Bet Amount</p:outputLabel>
+                        <p:inputText id="betAmount" value="#{currentDiceRollViewScopedView.betAmount}"/>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <p:outputLabel for="@next" value="Select Your Bet Face Value"/>
+                        <p:selectOneMenu id="betFaceValue" value="#{currentDiceRollViewScopedView.betFaceValue}">
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                            <f:selectItem itemLabel="4" itemValue="4"/>
+                            <f:selectItem itemLabel="5" itemValue="5"/>
+                            <f:selectItem itemLabel="6" itemValue="6"/>
+                        </p:selectOneMenu>
+                    </div>
                     <!--                    <div class="field ">-->
                     <!--                        <p:outputLabel for="@next" value="Select Radios"/>-->
                     <!--                        <p:selectOneRadio value="TODO Faces EL">-->
@@ -100,22 +108,24 @@
                     <!--                        </p:datePicker>-->
                     <!--                    </div>-->
 
-                    <!--                    <div class="formgroup-inline">-->
-                    <!--                        <div class="field">-->
-                    <!--                            <p:commandButton value="Submit"-->
-                    <!--                                             update=":messages "-->
-                    <!--                            >-->
-                    <!--                            </p:commandButton>-->
-                    <!--                        </div>-->
+                        <div class="formgroup-inline">
+                            <div class="field">
+                                <p:commandButton value="Roll Dice"
+                                                 action="#{currentDiceRollViewScopedView.onRoll()}"
+                                                 update=":messages outputPanel"
+                                >
+                                </p:commandButton>
+                            </div>
 
-                    <!--                        <div class="field">-->
-                    <!--                            <p:commandButton value="Clear"-->
-                    <!--                                             update="@form :outputPanel"-->
-                    <!--                                             styleClass="ui-button-secondary"-->
-                    <!--                            >-->
-                    <!--                            </p:commandButton>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                            <div class="field">
+                                <p:commandButton value="Clear"
+                                                 update="@form outputPanel"
+                                                 action="#{currentDiceRollViewScopedView.onClear()}"
+                                                 styleClass="ui-button-secondary"
+                                >
+                                </p:commandButton>
+                            </div>
+                        </div>
 
                 </div>
 
