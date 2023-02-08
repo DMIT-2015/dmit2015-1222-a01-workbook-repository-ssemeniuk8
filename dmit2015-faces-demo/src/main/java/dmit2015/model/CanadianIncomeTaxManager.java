@@ -42,7 +42,8 @@ public class CanadianIncomeTaxManager {
             try (var reader = new BufferedReader(new InputStreamReader(
                     getClass().getResourceAsStream("/data/csv/CanadianPersonalIncomeTaxRates.csv")))) {
                 // Skip the first line as it contains headers
-                reader.readLine();                String line;
+                reader.readLine();
+                String line;
                 incomeTaxRates = new ArrayList<>();
                 while ( (line = reader.readLine()) != null) {
                     var optionalCanadianPersonalIncomeTaxRate = CanadianPersonalIncomeTaxRate.parseCsv(line);
