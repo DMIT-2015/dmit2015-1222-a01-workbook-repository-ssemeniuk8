@@ -46,8 +46,11 @@ public class MovieRepository {
         if (optionalMovie.isPresent()) {
             // Update only properties that is editable by the end user
             existingMovie = optionalMovie.orElseThrow();
-            // TODO: Copy each edit property from updatedMovie to existingMovie
-            //existingMovie.setPropertyName(updatedMovie.getPropertyName());
+            existingMovie.setTitle(updatedMovie.getTitle());
+            existingMovie.setReleaseDate(updatedMovie.getReleaseDate());
+            existingMovie.setGenre(updatedMovie.getGenre());
+            existingMovie.setRating(updatedMovie.getRating());
+            existingMovie.setPrice(updatedMovie.getPrice());
 
             em.merge(existingMovie);
         }

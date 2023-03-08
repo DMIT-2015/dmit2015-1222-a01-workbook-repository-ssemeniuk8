@@ -54,10 +54,17 @@ public class MovieArquillianIT { // The class must be declared as public
                 .addClasses(MoviesApplicationStartupListener.class)
                 .addClasses(Movie.class, MovieRepository.class)
                 // TODO: Add any additional classes or resource files required
+                .addAsResource(new File("src/test/resources/data/csv/FederalIncomeTax_TestData.csv"),
+                        "data/csv/FederalIncomeTax_TestData.csv")
+                .addAsResource(new File("src/test/resources/data/csv/ProvincialIncomeTax_TestData.csv"),
+                        "data/csv/ProvincialIncomeTax_TestData.csv")
                 .addAsResource("data/csv/movies.csv")
                 .addAsResource("META-INF/persistence.xml")
                 .addAsResource("META-INF/beans.xml");
     }
+
+    //to use these csv sources:
+    //@CsvFileSource(resources = "/data/csv/circle-areas.csv", useHeadersInDisplayName = true)
 
     @Inject
     private MovieRepository _movieRepository;
