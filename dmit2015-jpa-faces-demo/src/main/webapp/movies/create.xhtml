@@ -37,11 +37,11 @@
 
                     <div class="field">
                         <p:outputLabel for="@next">Release Date</p:outputLabel>
-                        <p:inputText
+                        <p:datePicker
                                 id="releaseDate"
                                 value="#{currentMovieCreateView.newMovie.releaseDate}">
                             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
-                        </p:inputText>
+                        </p:datePicker>
                     </div>
 
                     <div class="field">

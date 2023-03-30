@@ -20,6 +20,31 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>selenium-jupiter</artifactId>
+            <version>4.3.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>jakarta.faces</groupId>
             <artifactId>jakarta.faces-api</artifactId>
             <version>4.0.1</version>
@@ -162,6 +187,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-all</artifactId>
+            <version>2.1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -179,10 +210,18 @@
                     <!--                    <feature-pack-location>wildfly-preview@maven(org.jboss.universe:community-universe)</feature-pack-location>-->
                     <layers>
                         <!-- https://docs.wildfly.org/27/Bootable_Guide.html#wildfly_layers -->
-                        <layer>jpa</layer>
+                        <layer>cloud-server</layer>
+                        <layer>undertow-https</layer>
                         <layer>jsf</layer>
                         <layer>h2-driver</layer>
                     </layers>
+                    <cli-sessions>
+                        <cli-session>
+                            <script-files>
+                                <script>/home/user2015/jdk/server/wildfly-scripts/configure-elytron.cli</script>
+                            </script-files>
+                        </cli-session>
+                    </cli-sessions>
                     <excluded-layers>
                         <layer>deployment-scanner</layer>
                     </excluded-layers>
